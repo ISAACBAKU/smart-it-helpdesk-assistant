@@ -1,0 +1,53 @@
+import { FaMoon, FaSun, FaBars } from 'react-icons/fa';
+
+const Sidebar = ({ isOpen, toggleSidebar, darkMode, setDarkMode }) => {
+  return (
+    <>
+      {/* Hamburger Button */}
+
+
+<button
+  onClick={toggleSidebar}
+  className="p-2 bg-transparent hover:bg-white/10 rounded-md transition duration-200 fixed top-3 left-3 z-[9999]"
+  title="Menu"
+>
+  <div className="fixed top-0 left-0 z-[9999] bg-green-500 p-6">
+<FaBars size={30} style={{ color: 'white', backgroundColor: 'red', padding: '10px' }} />
+</div>
+
+
+
+</button>
+
+
+
+
+
+      {/* Sidebar */}
+      <nav className={`sidebar fixed top-0 left-0 h-full w-64 transition-transform duration-300 ease-in-out 
+  ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
+  z-50 shadow-md bg-[#18181b]`}
+>
+
+
+        <div className="p-6">
+          <h2 className="text-xl font-bold mb-4 text-white">Menu Items</h2>
+
+          {/* Dark/Light Mode Toggle */}
+          <div className="absolute bottom-4 left-4">
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="flex items-center gap-2 text-white"
+              title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            >
+              {darkMode ? <FaSun /> : <FaMoon />}
+              {darkMode ? 'Light Mode' : 'Dark Mode'}
+            </button>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
+};
+
+export default Sidebar;

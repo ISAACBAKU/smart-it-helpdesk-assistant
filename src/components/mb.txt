@@ -1,0 +1,57 @@
+// src/components/MessageBubble.jsx
+
+import React from 'react';
+import './MessageBubble.css';
+
+// MessageBubble.jsx
+
+const MessageBubble = ({ role, text }) => {
+  const isUser = role === 'user';
+
+  const bubbleStyle = {
+  alignSelf: isUser ? 'flex-end' : 'flex-start',
+  background: isUser ? 'rgba(0, 123, 255, 0.15)' : 'rgba(100, 100, 100, 0.1)',
+  color: '#fff',
+  border: '1px solid #333',
+  padding: '12px 18px',
+  margin: '6px 0',
+  maxWidth: '70%',
+  boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+  borderRadius: isUser
+    ? '16px 16px 4px 16px'  // top-left, top-right, bottom-right (sharp), bottom-left
+    : '16px 16px 16px 4px', // assistant: sharp bottom-left
+};
+
+
+  return (
+    <div
+      className={`message-bubble ${isUser ? 'user-bubble' : 'assistant-bubble'}`}
+      style={{
+        alignSelf: isUser ? 'flex-end' : 'flex-start',
+        background: isUser ? '#1E88E5' : 'rgba(100, 100, 100, 0.1)',
+        color: '#fff',
+        border: '1px solid #333',
+        borderRadius: '16px',
+        padding: '12px 18px',
+        margin: '6px 0',
+        maxWidth: '70%',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+      }}
+    >
+      {text}
+    </div>
+  );
+};
+
+export default MessageBubble;
+
+
+
+
+
+
+
+
+
+
+
